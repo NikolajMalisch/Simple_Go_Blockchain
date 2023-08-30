@@ -77,9 +77,11 @@ func (b *Blockchain) AddBlock(from, to string, amount float64) {
 
 	lastBlock := b.chain[len(b.chain)-1]
 	newBlock := Block{
-		data:         blockData,
-		previousHash: lastBlock.hash,
-		timestamp:    time.Now(),
+		data:      blockData,
+		hash:      "",
+		prevHash:  "",
+		timestamp: time.Now(),
+		pow:       0,
 	}
 
 	// Calculate the PoW for the new block

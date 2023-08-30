@@ -77,9 +77,11 @@ func (b *Blockchain) AddBlock(from, to string, amount float64) {
 
 	lastBlock := b.chain[len(b.chain)-1]
 	newBlock := Block{
-		data:         blockData,
-		previousHash: lastBlock.hash,
-		timestamp:    time.Now(),
+		data:      blockData,
+		hash:      "",
+		prevHash:  "",
+		timestamp: time.Now(),
+		pow:       0,
 	}
 
 	// Calculate the PoW for the new block
@@ -98,10 +100,12 @@ func (b Blockchain) IsValid() bool {
 		currentBlock := b.chain[i+1]
 
 		// Check if the current block hash matches the calculated hash and if the previous hash of the
-
 		// current block matches the hash value of the previous block
 		if currentBlock.hash != currentBlock.CalculateHash() || currentBlock.previousHash != previousBlock.hash {
 			return false
 		}
 	}
-	
+
+	return true
+}
+
