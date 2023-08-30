@@ -1,0 +1,3 @@
+name: Go package_facts:
+  manager: auto # not required. choices: auto;rpm;apt;portage;pkg. The package manager used by the system so we can query the package information. Since 2.8 this is a list and can support multiple package managers per system. The 'portage' and 'pkg' options were added in version 2.8.
+  strategy: first # not required. choices: first;all. This option controls how the module queries the package managers on the system. C(first) means it will return only information for the first supported package manager available. C(all) will return information for all supported and available package managers on the system.
