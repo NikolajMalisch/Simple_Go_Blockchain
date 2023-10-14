@@ -1,3 +1,7 @@
+Compute:
+  Type: EC2
+  Fleet: Linux.x86-64.Large
+  SharedInstance: true
 name: Build and Test
 
 on:
@@ -22,4 +26,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-        
