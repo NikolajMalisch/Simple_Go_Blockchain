@@ -89,6 +89,7 @@
                       "pwsh",
                       "python",
                       "sh",
+                      "go",
                       "cmd",
                       "powershell"
                     ]
