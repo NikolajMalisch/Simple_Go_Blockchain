@@ -1,28 +1,30 @@
-Compute:
-  Type: EC2
-  Fleet: Linux.x86-64.Large
-  SharedInstance: true
-name: Build and Test
+NName: Workflow_Blockchan_GO
+SchemaVersion: "1.0"
 
-on:
-  push:
-    branches:
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: Push
+    Branches:
       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+# Required - Define action configurations.
+Actions:
+  Checkout Code:
+    Name: Checkout Code
+    Type: Checkout
+    Repository: your-repo
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+  Build and Test:
+    Name: Build and Test
+    Type: Shell
+    Commands:
+      - cd your-repo
+      - make build
+      - make test
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+  Deploy to Production:
+    Name: Deploy to Production
+    Type: Shell
+    Commands:
+      - cd Simple_Go_Blockchin
+      - make deploy-production
